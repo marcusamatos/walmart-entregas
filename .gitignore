@@ -7,4 +7,6 @@ nbproject
 .project
 .settings
 composer.lock
-vendor/bin
+vendor
+data/database.sqlite
+data/DoctrineORMModule/*

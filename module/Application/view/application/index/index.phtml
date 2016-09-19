@@ -1,44 +1,179 @@
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
-</div>
 
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
+                <h3 class="panel-title">Teste Inserir novo mapa no formato malha logistica</h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="https://github.com/zendframework/zf2/issues">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
+                <div class="col-md-6">
+                    <form id="form_mapa">
+                        <label>
+                            Nome:
+                            <input type="text" name="nome" value="Mapa 1">
+                        </label>
+                        <br>
+                        <label>
+                            Mapa:
+                            <textarea rows="10" name="mapa">A B 10
+B D 15
+A C 20
+C D 30
+B E 50
+D E 30</textarea>
+                        </label>
+                        <br>
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h4>Resultado:</h4>
+                        <pre id="resultado_mapa">...</pre>
+                </div>
+                <div class="col-md-6">
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Discover Modules') ?></h3>
+                <h3 class="panel-title">Consulta de rota e melhor custo</h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Help &amp; Support') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
+                <div class="col-md-6">
+                    <form id="form_rota">
+                        <label>
+                            Origem (string):
+                            <input type="text" name="origem" value="A">
+                        </label>
+                        <br>
+                        <label>
+                            Destino (string):
+                            <input type="text" name="destino" value="D">
+                        </label>
+                        <br>
+                        <label>
+                            Autonomia (float):
+                            <input type="text" name="autonomia" value="10">
+                        </label>
+                        <br>
+                        <label>
+                            Valor do litro (float):
+                            <input type="text" name="valor_litro" value="2.50">
+                        </label>
+                        <br>
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h4>Resultado:</h4>
+                    <pre id="resultado_rota">...</pre>
+                </div>
+                <div class="col-md-6">
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Documentação</h1>
+
+        <h3>Padrão Utilizado</h3>
+        <p>O webservice Walmart Entrega utilizam o padrão <em>REST</em> e o formato <em>JSON</em> codificado em <em>UTF-8</em> para expor os recursos disponíveis.</p>
+
+        <h3>Como testar requisições POST, PUT, etc..</h3>
+        <p>
+            Para os webservices que são acessíveis via POST, como o webservice de cadastro de novos mapas e consulta de rotas por exemplo, aconselhamos a utilização de alguma das ferramentas abaixo para simular o post:
+
+
+
+        </p>
+        <ul>
+            <li>Fiddler (<a href="http://www.fiddler2.com" target="_blank">http://www.fiddler2.com</a>)</li>
+            <li>Poster (<a href="https://addons.mozilla.org/pt-BR/firefox/addon/2691" target="_blank">https://addons.mozilla.org/pt-BR/firefox/addon/2691</a>) - plugin para Firefox</li>
+        </ul>
+
+        <h3>Cadastrar novo mapa</h3>
+        <p>POST: http://DOMINIO/api/mapa</p>
+        <stron>Parametros:</stron>
+        <pre>
+            {
+                "nome": "Mapa de Exemplo",
+                "mapa": "A B 10\nB D 15\nA C 20\nC D 30\nB E 50\nD E 30"
+            }
+        </pre>
+        <stron>Retorno:</stron>
+        <pre>
+            {
+                "status": "success",
+                "message": ""
+            }
+        </pre>
+
+        <h3>Consultar a rota com o melhor custo</h3>
+        <p>POST: http://DOMINIO/api/rota</p>
+        <stron>Parametros:</stron>
+        <pre>
+            {
+                "origem": "A",
+                "destino": "B",
+                "autonomia": 10,
+                "valor_litro": 2.5
+            }
+        </pre>
+        <stron>Retorno:</stron>
+        <pre>
+            {
+                "rota": "A B D",
+                "custo": 6.25,
+                "status": "success",
+                "message": ""
+            }
+        </pre>
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function(){
+        $('#form_mapa').submit(function(e){
+            e.preventDefault();
+
+            var data = $(this).serialize();
+
+            $.ajax({
+                type: "POST",
+                url: 'api/mapa',
+                data: data,
+                success: function(data){
+                    $('#resultado_mapa').html(JSON.stringify(data));
+                    console.log(data);
+                },
+                dataType: 'json'
+            });
+        });
+
+        $('#form_rota').submit(function(e){
+            e.preventDefault();
+
+            var data = $(this).serialize();
+
+            $.ajax({
+                type: "POST",
+                url: 'api/rota',
+                data: data,
+                success: function(data){
+                    $('#resultado_rota').html(JSON.stringify(data));
+                    console.log(data);
+                },
+                dataType: 'json'
+            });
+        });
+    });
+</script>
