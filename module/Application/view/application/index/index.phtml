@@ -83,6 +83,20 @@ D E 30</textarea>
     <div class="col-md-12">
         <h1>Documentação</h1>
 
+        <h3>Informações</h3>
+        <p>Este webservice permite o cadastro de mapas (utilizando o formato malha logística) e consulta de rotas com o melhor custo.</p>
+        <i>*obs: Este webservice foi desenvolvidor para teste e não deve ser utilizado para produção.</i>
+
+        <h3>Como Instalar</h3>
+        <p>A execução padrão esta com o banco de dados SQLITE, mas pode ser migrado facilmente para qualquer banco de dados suportado pela linguagem PHP.</p>
+        <ol>
+            <li>Executar a linha de comando: `php composer.phar install` para instalar as dependências via composer.</li>
+            <li>Executar a linha de comando `vendor/bin/doctrine-module orm:schema-tool:update --force` para que o doctrine implemente as tabelas do banco de dados</li>
+            <li>
+                Executar um servidor web, com suporte php, de sua preferência:
+            </li>
+        </ol>
+
         <h3>Padrão Utilizado</h3>
         <p>O webservice Walmart Entrega utilizam o padrão <em>REST</em> e o formato <em>JSON</em> codificado em <em>UTF-8</em> para expor os recursos disponíveis.</p>
 
