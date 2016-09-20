@@ -12,7 +12,7 @@ Como Instalar
 A execução padrão esta com o banco de dados SQLITE, mas pode ser migrado facilmente para qualquer banco de dados suportado pela linguagem PHP.
 
 * Executar a linha de comando: `php composer.phar install` para instalar as dependências via composer.
-* Executar a linha de comando `touch database.sqlite` para criar o bando de dados
+* Executar a linha de comando `touch data/database.sqlite` para criar o bando de dados
 * Executar a linha de comando `vendor/bin/doctrine-module orm:schema-tool:update --force` para que o doctrine implemente as tabelas do banco de dados
 * Executar um servidor web, com suporte php, de sua preferência:
 
