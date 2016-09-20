@@ -85,12 +85,13 @@ D E 30</textarea>
 
         <h3>Informações</h3>
         <p>Este webservice permite o cadastro de mapas (utilizando o formato malha logística) e consulta de rotas com o melhor custo.</p>
-        <i>*obs: Este webservice foi desenvolvidor para teste e não deve ser utilizado para produção.</i>
+        <i>*obs: Este webservice foi desenvolvidor para teste e não deve ser utilizado em produção.</i>
 
         <h3>Como Instalar</h3>
         <p>A execução padrão esta com o banco de dados SQLITE, mas pode ser migrado facilmente para qualquer banco de dados suportado pela linguagem PHP.</p>
         <ol>
             <li>Executar a linha de comando: `php composer.phar install` para instalar as dependências via composer.</li>
+            <li>Executar a linha de comando `touch database.sqlite` para criar o bando de dados</li>
             <li>Executar a linha de comando `vendor/bin/doctrine-module orm:schema-tool:update --force` para que o doctrine implemente as tabelas do banco de dados</li>
             <li>
                 Executar um servidor web, com suporte php, de sua preferência:
@@ -112,7 +113,7 @@ D E 30</textarea>
             <li>Poster (<a href="https://addons.mozilla.org/pt-BR/firefox/addon/2691" target="_blank">https://addons.mozilla.org/pt-BR/firefox/addon/2691</a>) - plugin para Firefox</li>
         </ul>
 
-        <h3>Cadastrar novo mapa</h3>
+        <h3>Como cadastrar novo mapa</h3>
         <p>POST: http://DOMINIO/api/mapa</p>
         <stron>Parametros:</stron>
         <pre>
