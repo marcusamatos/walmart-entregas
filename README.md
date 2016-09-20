@@ -1,77 +1,80 @@
-ZendSkeletonApplication
-=======================
+Walmart Entregas
+================
 
 Introduction
 ------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+Este webservice permite o cadastro de mapas (utilizando o formato malha logística) e consulta de rotas com o melhor custo.
+*obs: Este webservice foi desenvolvidor para teste e não deve ser utilizado para produção.
 
-Installation
-------------
+Como Instalar
+-------------
 
-Using Composer (recommended)
-----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+A execução padrão esta com o banco de dados SQLITE, mas pode ser migrado facilmente para qualquer banco de dados suportado pela linguagem PHP.
 
-    curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
+* Executar a linha de comando: `php composer.phar install` para instalar as dependências via composer.
+* Executar a linha de comando `vendor/bin/doctrine-module orm:schema-tool:update --force` para que o doctrine implemente as tabelas do banco de dados
+* Executar um servidor web, com suporte php, de sua preferência:
 
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
 
-    cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
-    cd ZendSkeletonApplication
-    php composer.phar self-update
-    php composer.phar install
-
-(The `self-update` directive is to ensure you have an up-to-date `composer.phar`
-available.)
-
-Another alternative for downloading the project is to grab it via `curl`, and
-then pass it to `tar`:
-
-    cd my/project/dir
-    curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
-
-You would then invoke `composer` to install dependencies per the previous
-example.
-
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
-
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
-
-Web Server Setup
+Padrão Utilizado
 ----------------
 
-### PHP CLI Server
+O webservice Walmart Entrega utilizam o padrão REST e o formato JSON codificado em UTF-8 para expor os recursos disponíveis.
 
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
+Como testar requisições POST, PUT, etc..
+----------------------------------------
 
-    php -S 0.0.0.0:8080 -t public/ public/index.php
+Para os webservices que são acessíveis via POST, como o webservice de cadastro de novos mapas e consulta de rotas por exemplo, aconselhamos a utilização de alguma das ferramentas abaixo para simular o post:
 
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
+    Fiddler (http://www.fiddler2.com)
+    Poster (https://addons.mozilla.org/pt-BR/firefox/addon/2691) - plugin para Firefox
 
-**Note: ** The built-in CLI server is *for development only*.
+Como testar requisições POST, PUT, etc..
+----------------------------------------
 
-### Apache Setup
+POST: http://DOMINIO/api/mapa
 
-To setup apache, setup a virtual host to point to the public/ directory of the
-project and you should be ready to go! It should look something like below:
+Parametros:
 
-    <VirtualHost *:80>
-        ServerName zf2-tutorial.localhost
-        DocumentRoot /path/to/zf2-tutorial/public
-        SetEnv APPLICATION_ENV "development"
-        <Directory /path/to/zf2-tutorial/public>
-            DirectoryIndex index.php
-            AllowOverride All
-            Order allow,deny
-            Allow from all
-        </Directory>
-    </VirtualHost>
+```
+{
+    "nome": "Mapa de Exemplo",
+    "mapa": "A B 10\nB D 15\nA C 20\nC D 30\nB E 50\nD E 30"
+}
+```
+
+Retorno:
+
+```
+{
+    "status": "success",
+    "message": ""
+}
+```
+
+Consultar a rota com o melhor custo
+-----------------------------------
+
+POST: http://DOMINIO/api/rota
+
+Parametros:
+
+```
+{
+    "origem": "A",
+    "destino": "B",
+    "autonomia": 10,
+    "valor_litro": 2.5
+}
+```
+
+Retorno:
+
+```
+{
+    "rota": "A B D",
+    "custo": 6.25,
+    "status": "success",
+    "message": ""
+}
+```
